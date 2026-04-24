@@ -1,0 +1,568 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eyeom</title>
+<style>
+/* make cards clickable */
+.card{
+background:white;
+padding:16px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+cursor:pointer;
+transition:0.25s;
+}
+/* ✅ ADD HERE */
+.msg{
+padding:10px 14px;
+border-radius:14px;
+max-width:75%;
+font-size:14px;
+}
+.user{
+background:#588157;
+color:white;
+align-self:flex-end;
+}
+.aira{
+background:#f1f3f2;
+align-self:flex-start;
+}
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 12px 30px rgba(0,0,0,0.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+font-family:"Segoe UI", Arial;
+background:linear-gradient(to top,#dfeee8,#f7faf9);
+overflow-x:hidden;
+color:#1f2d3d;
+}
+a{
+text-decoration:none;
+color:inherit;
+}
+/* 🌿 CANVAS */
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:0;
+}
+/* ☁️ CLOUDS */
+.cloud{
+position:fixed;
+top:80px;
+width:180px;
+height:60px;
+background:rgba(255,255,255,0.5);
+border-radius:50px;
+filter:blur(2px);
+z-index:1;
+animation:cloudMove 80s linear infinite;
+}
+.c1{top:80px; left:-200px;}
+.c2{top:140px; left:-300px; animation-duration:100s;}
+.c3{top:200px; left:-250px; animation-duration:120s;}
+@keyframes cloudMove{
+0%{transform:translateX(0);}
+100%{transform:translateX(120vw);}
+}
+/* 🌫️ FOG */
+.fog{
+position:fixed;
+bottom:0;
+width:100%;
+height:200px;
+background:linear-gradient(to top, rgba(255,255,255,0.4), transparent);
+z-index:1;
+pointer-events:none;
+}
+/* 🌳 GROUND */
+.ground{
+position:fixed;
+bottom:0;
+width:100%;
+height:100px;
+/* soil + grass gradient */
+background:
+linear-gradient(to top,#6b8f71 0%, #a3b18a 40%, #dfeee8 100%);
+z-index:1;
+overflow:hidden;
+}
+/* 🌿 GRASS TEXTURE */
+.grass{
+position:fixed;
+bottom:0;
+width:100%;
+height:60px;
+background-image:linear-gradient(
+to right,
+rgba(60,100,60,0.3) 1px,
+transparent 1px
+);
+background-size:6px 100%;
+opacity:0.3;
+z-index:2;
+animation:grassMove 4s linear infinite;
+}
+/* slight wind movement */
+@keyframes grassMove{
+0%{background-position-x:0;}
+100%{background-position-x:20px;}
+}
+/* 🌳 TREES */
+.trees{
+position:fixed;
+bottom:80px;
+width:100%;
+display:flex;
+justify-content:space-around;
+z-index:2;
+}
+.tree{
+position:relative;
+width:100px;
+height:180px;
+animation:sway 6s ease-in-out infinite;
+}
+.trunk{
+position:absolute;
+bottom:0;
+left:50%;
+transform:translateX(-50%);
+width:18px;
+height:80px;
+background:#6b4f3a;
+}
+.leaf{
+position:absolute;
+bottom:60px;
+left:50%;
+transform:translateX(-50%);
+width:110px;
+height:110px;
+background:#588157;
+border-radius:50%;
+}
+@keyframes sway{
+0%{transform:rotate(0);}
+50%{transform:rotate(3deg);}
+100%{transform:rotate(0);}
+}
+/* 🕊️ BIRDS (VISIBLE FIX) */
+.bird{
+position:fixed;
+top:20%;
+width:60px;
+z-index:3;
+animation:fly 25s linear infinite;
+}
+.b2{top:40%;animation-delay:10s;}
+.b3{top:60%;animation-delay:18s;}
+.bird svg{fill:#1f2d3d;width:100%;}
+@keyframes fly{
+0%{left:-100px;}
+100%{left:110%;}
+}
+/* HEADER LAYOUT */
+.header{
+position:fixed;
+top:0;
+width:100%;
+padding:20px 25px;
+background:rgba(255,255,255,0.75);
+backdrop-filter:blur(12px);
+z-index:10;
+display:flex;
+justify-content:center;
+align-items:center;
+border-bottom:1px solid rgba(0,0,0,0.05);
+}
+.main{
+position:relative;
+z-index:5;
+padding-top:120px; /* increase from 80px */
+max-width:1000px;
+margin:auto;
+}
+/* CENTER LOGO */
+.logo-center{
+line-height:1.2;
+text-align:center;
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+}
+/* BRAND NAME */
+.brand{
+font-size:32px;
+font-weight:600;
+letter-spacing:2px;
+background:linear-gradient(135deg,#2f3e46,#588157);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+transition:0.3s;
+}
+/* TAGLINE */
+.tagline{
+font-size:11px;
+letter-spacing:3px;
+margin-top:6px;
+color:#6c757d;
+text-transform:uppercase;
+}
+/* NAVIGATION (right side) */
+.nav{
+position:absolute;
+right:25px;
+}
+.nav a{
+margin-left:15px;
+text-decoration:none;
+color:#1f2d3d;
+font-size:14px;
+}
+/* MAIN */
+.section h2{
+text-align:center;
+margin-bottom:15px;
+}
+.box{
+background:rgba(255,255,255,0.9);
+padding:25px;
+border-radius:16px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+margin-bottom:20px;
+}
+h1{font-size:34px;margin-bottom:10px;}
+h2{font-size:24px;margin-bottom:10px;}
+p{opacity:0.75;}
+/* CARDS */
+.grid{
+display:grid;
+grid-template-columns:repeat(3, 1fr); /* force 3 columns */
+gap:20px;
+margin-top:20px;
+max-width:700px;
+}
+@media(max-width:768px){
+.grid{
+grid-template-columns:1fr; /* stack on mobile */
+}
+}
+/* CTA */
+.cta{
+margin-top:15px;
+padding:12px 20px;
+background:#2f3e46;
+color:white;
+border-radius:25px;
+display:inline-block;
+cursor:pointer;
+}
+/* SECTION LAYOUT */
+.section{
+padding:80px 20px;
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+/* BUTTON LINKS (About / Contact / Privacy) */
+.link-btn{
+display:inline-block;
+margin-top:12px;
+padding:10px 16px;
+background:#2f3e46;
+color:white;
+border-radius:20px;
+font-size:14px;
+}
+/* AIRA */
+/* BUTTON */
+#airaBtn{
+position:fixed;
+bottom:20px;
+right:20px;
+padding:12px 18px;
+background:linear-gradient(135deg,#344e41,#588157);
+color:white;
+border-radius:30px;
+display:flex;
+align-items:center;
+gap:8px;
+font-size:14px;
+font-weight:500;
+cursor:pointer;
+z-index:100;
+box-shadow:0 8px 25px rgba(0,0,0,0.25);
+transition:0.25s;
+}
+#airaBtn:hover{
+transform:translateY(-3px);
+box-shadow:0 12px 30px rgba(0,0,0,0.3);
+}
+/* BOX */
+#airaBox{
+position:fixed;
+bottom:20px;
+right:20px;
+width:350px;
+height:450px;
+background:white;
+border-radius:18px;
+box-shadow:0 20px 50px rgba(0,0,0,0.25);
+display:flex;
+flex-direction:column;
+overflow:hidden;
+z-index:100;
+opacity:0;
+transform:translateY(30px) scale(0.95);
+pointer-events:none;
+transition:0.3s;
+}
+#airaBox.open{
+  opacity:1;
+  transform: translateY(0) scale(1);
+  pointer-events:auto;
+}
+/* HEADER */
+#airaHeader{
+position:relative;
+background:linear-gradient(135deg,#344e41,#588157);
+color:white;
+padding:14px;
+font-weight:500;
+}
+#closeAira{
+position:absolute;
+right:14px;
+top:10px;
+cursor:pointer;
+font-size:18px;
+opacity:0.8;
+}
+#closeAira:hover{
+opacity:1;
+}
+/* CHAT */
+/* chat takes available space */
+#airaChat{
+flex:1;
+padding:12px;
+overflow-y:auto;
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+/* INPUT */
+#airaInputBox{
+display:flex;
+border-top:1px solid #eee;
+background:white;
+padding:6px;
+}
+#airaInput{
+flex:1;
+padding:10px;
+border:none;
+outline:none;
+font-size:14px;
+}
+#airaInputBox button{
+background:#344e41;
+color:white;
+border:none;
+padding:10px 14px;
+cursor:pointer;
+border-radius:8px;
+}
+#airaInputBox button:hover{
+background:#588157;
+}
+</style>
+</head>
+<body>
+<canvas id="leaves"></canvas>
+<div class="cloud c1"></div>
+<div class="cloud c2"></div>
+<div class="cloud c3"></div>
+<div class="ground"></div>
+<div class="grass"></div>
+<div class="trees">
+<div class="tree"><div class="trunk"></div><div class="leaf"></div></div>
+<div class="tree"><div class="trunk"></div><div class="leaf"></div></div>
+<div class="tree"><div class="trunk"></div><div class="leaf"></div></div>
+</div>
+<!-- birds -->
+<div class="bird"><svg viewBox="0 0 100 50"><path d="M10 25 Q 25 0 40 25 Q 25 15 10 25"/></svg></div>
+<div class="bird b2"><svg viewBox="0 0 100 50"><path d="M10 25 Q 25 0 40 25 Q 25 15 10 25"/></svg></div>
+<div class="bird b3"><svg viewBox="0 0 100 50"><path d="M10 25 Q 25 0 40 25 Q 25 15 10 25"/></svg></div>
+<!-- HEADER -->
+<div class="header">
+  <div class="logo-center">
+    <div class="brand">EyeOm</div>
+    <div class="tagline">The Third Eye Guiding Inner Balance</div>
+  </div>
+  <div class="nav">
+    <a href="#">Home</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#privacy">Privacy</a>
+  </div>
+</div>
+<div class="main">
+<!-- HERO -->
+<div class="section">
+<div class="box">
+<h1>Understand your mind clearly</h1>
+<p>Clarity before action. Understanding before decisions.</p>
+<div class="cta">Start</div>
+</div>
+</div>
+<!-- CATEGORIES -->
+<div class="section">
+<h2>Explore</h2>
+<div class="grid">
+<a href="health.html" class="card">Health</a>
+<a href="students.html" class="card">Students</a>
+<a href="parenting.html" class="card">Parenting</a>
+<a href="work.html" class="card">Work</a>
+<a href="relationships.html" class="card">Relationships</a>
+<a href="clarity.html" class="card">Clarity</a>
+</div>
+</div>
+<!-- ABOUT -->
+<div class="section" id="about">
+<div class="box">
+<h2>About</h2>
+<p>This platform helps you understand thoughts, emotions, and situations clearly.</p>
+<a href="about.html" class="link-btn">Read More</a>
+</div>
+</div>
+<!-- CONTACT -->
+<div class="section" id="contact">
+<div class="box">
+<h2>Contact</h2>
+<p>Email: support@eyeom.com</p>
+<a href="contact.html" class="link-btn">Open Contact Page</a>
+</div>
+</div>
+<!-- PRIVACY -->
+<div class="section" id="privacy">
+<div class="box">
+<h2>Privacy</h2>
+<p>Your conversations remain private and secure.</p>
+<a href="privacy.html" class="link-btn">View Policy</a>
+</div>
+</div>
+</div>
+<!-- AIRA BUTTON -->
+<div id="airaBtn" onclick="toggleAira()">
+    Aira
+</div>
+<!-- AIRA CHAT -->
+<div id="airaBox">
+  <div id="airaHeader">
+    Aira
+    <span id="closeAira" onclick="toggleAira()">✕</span>
+  </div>
+  <div id="airaChat"></div>
+  <div id="airaInputBox">
+    <input id="airaInput" placeholder="Type here..." />
+    <button onclick="sendMessage()">→</button>
+  </div>
+</div>
+<script>
+/* leaves */
+const canvas=document.getElementById("leaves");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+let leaves=[];
+for(let i=0;i<40;i++){
+leaves.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+size:Math.random()*5+3,
+speed:Math.random()*1
+});
+}
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="rgba(120,160,120,0.3)";
+leaves.forEach(l=>{
+ctx.beginPath();
+ctx.ellipse(l.x,l.y,l.size,l.size/2,0,0,Math.PI*2);
+ctx.fill();
+l.y+=l.speed;
+if(l.y>canvas.height){
+l.y=-10;
+l.x=Math.random()*canvas.width;
+}
+});
+requestAnimationFrame(draw);
+}
+draw();
+</script>
+<script>
+function toggleAira(){
+const box = document.getElementById("airaBox");
+box.classList.toggle("open");
+if(box.classList.contains("open")){
+setTimeout(()=>{
+document.getElementById("airaInput").focus();
+},200);
+}
+}
+async function sendMessage(){
+  const input = document.getElementById("airaInput");
+  const chat = document.getElementById("airaChat");
+
+  if(!input || !chat) return;
+  const text = input.value.trim();
+  if(text === "") return;
+
+  // user message
+  const user = document.createElement("div");
+  user.className = "msg user";
+  user.innerText = text;
+  chat.appendChild(user);
+
+  input.value = "";
+
+  // typing
+  const typing = document.createElement("div");
+  typing.className = "msg aira";
+  typing.innerText = "Aira is thinking...";
+  chat.appendChild(typing);
+
+  try {
+    const res = await fetch("https://eyeom-aira.onrender.com/ask", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ question: text })
+    });
+
+    const data = await res.json();
+
+    typing.remove();
+
+    const reply = document.createElement("div");
+    reply.className = "msg aira";
+    reply.innerText = data.answer;
+
+    chat.appendChild(reply);
+    chat.scrollTop = chat.scrollHeight;
+
+  } catch (err) {
+    typing.innerText = "Error connecting to server";
+  }
+}
+</script>
+</body>
+</html>
