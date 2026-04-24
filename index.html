@@ -380,7 +380,55 @@ cursor:pointer;
 border-radius:8px;
 }
 #airaInputBox button:hover{
-background:#588157;
+  background:#588157;
+}
+
+/* 👇 ADD HERE */
+@media (max-width: 768px){
+
+  .header{
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .logo-center{
+    position: static;
+    transform: none;
+    margin-bottom: 10px;
+  }
+
+  .nav{
+    position: static;
+    margin-top: 5px;
+  }
+
+  .main{
+    padding-top: 140px;
+  }
+
+  .box{
+    width: 90%;
+    padding: 20px;
+  }
+
+  .grid{
+    grid-template-columns: 1fr;
+  }
+
+  .trees{
+    display: none;
+  }
+
+  #airaBox{
+    width: 95%;
+    right: 2.5%;
+    height: 80vh;
+  }
+
+  #airaBtn{
+    bottom: 15px;
+    right: 15px;
+  }
 }
 </style>
 </head>
