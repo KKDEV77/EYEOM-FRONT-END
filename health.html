@@ -101,7 +101,7 @@ margin:auto;
 
 /* SECTION */
 .section{
-padding:70px 20px;
+padding:50px 20px;
 display:flex;
 flex-direction:column;
 align-items:center;
@@ -198,9 +198,17 @@ h1{font-size:26px;}
 <div class="section">
 <div class="box">
 <h1>What’s happening in your mind right now?</h1>
+  <div class="cta" onclick="openAira('I feel something is off mentally')">
+Talk to Aira now
+</div>
 <p>Not everything is stress. Sometimes it’s something unfinished.</p>
 </div>
 </div>
+  <p>Not everything is stress. Sometimes it’s something unfinished.</p>
+
+<p style="margin-top:10px; font-weight:500;">
+Let’s understand it step by step.
+</p>
 
 <!-- ENTRY OPTIONS -->
 <div class="section">
@@ -289,7 +297,9 @@ But thoughts naturally slow down when they make sense.
 <h2>Start here</h2>
 <p>Pick one thought. Break it down. Understand it.</p>
 
-<div class="cta">Start Thinking</div>
+<div class="cta" onclick="openAira('I want clarity on my thoughts')">
+Start with Aira
+</div>
 </div>
 </div>
 
@@ -299,7 +309,9 @@ But thoughts naturally slow down when they make sense.
 <h2>Need deeper clarity?</h2>
 <p>Talk to a real person and understand your situation better.</p>
 
-<div class="cta">Book a Session</div>
+<div class="cta" onclick="window.open('https://wa.me/919603561111')">
+Talk to a human
+</div>
 </div>
 </div>
 
@@ -400,6 +412,7 @@ document.querySelectorAll(".card").forEach((card, index) => {
   const keys = ["stress","overthinking","tired","focus","repeat","unknown"];
 
   card.addEventListener("click", () => {
+    
 
     // ✅ remove active from all
     document.querySelectorAll(".card").forEach(c => c.classList.remove("active"));
@@ -442,16 +455,18 @@ Clarity reduces mental load. Now you can either act on it
 or explore deeper with guidance.
 </p>
 
-<div class="cta" onclick="window.location.href='aira.html'">
-Talk to Aira
+<div class="cta" onclick="openAira('I want to understand this deeper')">
+Talk to Aira about this
 </div>
 `;
 document.getElementById("nextBtn").style.display = "none";
 }
 
 });
-
-</script>box
+function openAira(context){
+  window.location.href = "index.html?aira=" + encodeURIComponent(context);
+}
+</script>
 
 </body>
 </html>
