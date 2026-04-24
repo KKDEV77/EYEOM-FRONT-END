@@ -598,6 +598,12 @@ async function sendMessage(){
 
     const data = await res.json();
 
+// ✅ ADD HERE
+let chatHistory = JSON.parse(localStorage.getItem("airaChat")) || [];
+chatHistory.push({ role: "user", text: text });
+chatHistory.push({ role: "aira", text: data.answer });
+localStorage.setItem("airaChat", JSON.stringify(chatHistory));
+
     typing.remove();
 
     const reply = document.createElement("div");
