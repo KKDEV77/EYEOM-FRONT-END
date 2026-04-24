@@ -197,18 +197,67 @@ h1{font-size:26px;}
 <!-- HERO -->
 <div class="section">
 <div class="box">
-<h1>What’s happening in your mind right now?</h1>
-  <div class="cta" onclick="openAira('I feel something is off mentally')">
-Talk to Aira now
-</div>
-<p>Not everything is stress. Sometimes it’s something unfinished.</p>
-</div>
-</div>
-  <p>Not everything is stress. Sometimes it’s something unfinished.</p>
-
-<p style="margin-top:10px; font-weight:500;">
-Let’s understand it step by step.
+<h1>Your body shows symptoms. Your mind shapes how you experience them.</h1>
+<p>
+Two people can have the same condition — but experience it completely differently.
+That difference often comes from the mind.
 </p>
+</div>
+</div>
+
+<div class="section">
+<div class="box">
+<h2>Example: Diabetes</h2>
+<p>
+Some people panic, restrict everything, and live in fear.  
+Others understand it, adapt calmly, and live normally.
+</p>
+<p>The condition is the same. The experience is not.</p>
+
+<h2>Example: Cancer diagnosis</h2>
+<p>
+The body fights the disease.  
+But the mind decides whether the person collapses or stays grounded.
+</p>
+</div>
+</div>
+
+<div class="section">
+<div class="box">
+<h2>What research shows</h2>
+<p>
+Stress, fear, and confusion can worsen symptoms, reduce recovery speed,
+and affect decision-making during treatment.
+</p>
+<p>
+Clarity and emotional stability improve outcomes.
+</p>
+</div>
+</div>
+
+<div class="section">
+<div class="box">
+<h2>During pregnancy or hormonal changes</h2>
+<p>
+Not all mood changes are "just hormones".  
+Sometimes they come from fear, uncertainty, or lack of understanding.
+</p>
+</div>
+</div>
+
+<div class="section">
+<div class="box">
+<h2>Health is not just physical</h2>
+<p>
+Symptoms are physical.  
+Suffering is often psychological.
+</p>
+
+<div class="cta" onclick="openAira('I am worried about my health and want clarity')">
+Talk to Aira about your health
+</div>
+</div>
+</div>
 
 <!-- ENTRY OPTIONS -->
 <div class="section">
@@ -466,7 +515,35 @@ document.getElementById("nextBtn").style.display = "none";
 function openAira(context){
   window.location.href = "index.html?aira=" + encodeURIComponent(context);
 }
-</script>
+  window.addEventListener("load", () => {
+  const chat = document.getElementById("airaChat");
+  if(!chat) return;
 
+  const history = JSON.parse(localStorage.getItem("airaChat")) || [];
+
+  history.forEach(msg => {
+    const div = document.createElement("div");
+    div.className = msg.role === "user" ? "msg user" : "msg aira";
+    div.innerText = msg.text;
+    chat.appendChild(div);
+  });
+});
+</script>
+  function toggleAira(){
+  const box = document.getElementById("airaBox");
+  box.style.display = box.style.display === "none" ? "block" : "none";
+}
+<!-- AIRA BUTTON -->
+<div id="airaBtn" onclick="toggleAira()">Aira</div>
+
+<!-- AIRA BOX -->
+<div id="airaBox" style="display:none;">
+  <div id="airaChat"></div>
+
+  <div id="airaInputBox">
+    <input id="airaInput" placeholder="Talk to Aira..." />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
 </body>
 </html>
