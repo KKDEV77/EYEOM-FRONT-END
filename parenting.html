@@ -201,12 +201,14 @@ h1{font-size:26px;}
 <p>
 Parenting is not confusing because you’re doing it wrong.  
 It’s confusing because you’re handling emotions — yours and your child’s.
+  <p style="margin-top:10px; font-size:14px; opacity:0.6;">
+You’re not failing. You’re dealing with something complex.
+</p>
 </p>
 
 <div class="cta" onclick="openAira('I feel unsure about my parenting decisions')">
 Talk to Aira about parenting
 </div>
-</p>
 </div>
 </div>
 
@@ -247,8 +249,8 @@ Tantrums, silence, anger, or stubbornness are often signals, not problems.
 Parents don’t just react to children — they react from their own emotional state.
 </p>
 <p>
-Stress, fear, and confusion can worsen symptoms, reduce recovery speed,
-and affect decision-making during treatment.
+When emotions are unclear, reactions become stronger.
+This creates cycles of frustration — for both parent and child.
 </p>
 <p>
 Clarity and emotional stability improve outcomes.
@@ -328,7 +330,7 @@ This is not “bad behavior” — it’s communication.
 <!-- THEORY -->
 <div class="section">
 <div class="box">
-<h2>Why your mind doesn’t stop</h2>
+<h2>Why parenting feels overwhelming</h2>
 
 <h3>Cognitive Load</h3>
 <p>
@@ -374,14 +376,17 @@ When you understand what’s happening, your response becomes calmer and more ef
 </div>
 
 <!-- ACTION -->
-<h2>Start here</h2>
+<div class="section">
+<div class="box">
 
+<h2>Start here</h2>
 <p>
 Pause. What exactly is happening — behavior, emotion, or misunderstanding?
 </p>
 
 <div class="cta" onclick="openAira('I want clarity in my parenting situation')">
 Start with Aira
+</div>
 
 </div>
 </div>
@@ -390,10 +395,7 @@ Start with Aira
 <!-- HUMAN HELP -->
 <div class="section">
 <div class="box">
-<h2>Need deeper clarity?</h2>
-<p>Talk to a real person and understand your situation better.</p>
 
-<div class="cta" onclick="window.open('https://wa.me/919603561111')">
 <h2>Need deeper help?</h2>
 
 <p>
@@ -401,9 +403,9 @@ If things feel overwhelming, you can go deeper with guidance.
 </p>
 
 <div class="cta" onclick="openAira('I need deeper help with parenting')">
-Talk to Aira deeper
+Start with Aira
 </div>
-</div>
+
 </div>
 </div>
 
@@ -571,11 +573,12 @@ function openAira(context){
     chat.appendChild(div);
   });
 });
-</script>
   function toggleAira(){
   const box = document.getElementById("airaBox");
   box.style.display = box.style.display === "none" ? "block" : "none";
 }
+</script>
+  
 <!-- AIRA BUTTON -->
 <div id="airaBtn" onclick="toggleAira()">Aira</div>
 
