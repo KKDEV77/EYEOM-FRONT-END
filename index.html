@@ -617,6 +617,31 @@ localStorage.setItem("airaChat", JSON.stringify(chatHistory));
     typing.innerText = "Error connecting to server";
   }
 }
+  // ✅ AUTO START AIRA WITH CONTEXT
+window.addEventListener("load", () => {
+  const params = new URLSearchParams(window.location.search);
+  const context = params.get("aira");
+
+  if(context){
+    document.getElementById("airaBox").style.display = "block";
+    document.getElementById("airaInput").value = context;
+
+    // auto send message
+    sendMessage();
+  }
+});
+  // ✅ LOAD OLD CHAT
+window.addEventListener("load", () => {
+  const chat = document.getElementById("airaChat");
+  const history = JSON.parse(localStorage.getItem("airaChat")) || [];
+
+  history.forEach(msg => {
+    const div = document.createElement("div");
+    div.className = msg.role === "user" ? "msg user" : "msg aira";
+    div.innerText = msg.text;
+    chat.appendChild(div);
+  });
+});
 </script>
 </body>
 </html>
