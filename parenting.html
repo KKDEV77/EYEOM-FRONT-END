@@ -1,89 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>parenting - EyeOm</title>
+
+<style>
+#flow{
+margin-top:50px;
+opacity:0;
+transform:translateY(20px);
+transition:0.4s;
+}
+
+#flow.show{
+opacity:1;
+transform:translateY(0);
+}
+.card.active{
+background:#344e41;
+color:white;
+transform:scale(1.03);
+box-shadow:0 8px 25px rgba(0,0,0,0.15);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+#flowBox{
+animation:fadeUp 0.4s ease;
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+body{
+font-family:"Segoe UI", Arial;
+background:linear-gradient(to top,#eef5f1,#f9fbfa);
+color:#1f2d3d;
+}
+
+/* HEADER */
+.header{
+position:fixed;
+top:0;
+width:100%;
+padding:22px 25px;
+background:rgba(255,255,255,0.9);
+backdrop-filter:blur(10px);
+z-index:10;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.logo-center{
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+text-align:center;
+}
+
+.brand{
+font-size:24px;
+font-weight:700;
+background:linear-gradient(45deg,#344e41,#588157);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.tagline{
+font-size:11px;
+opacity:0.6;
+letter-spacing:2px;
+}
+
+.nav{
+position:absolute;
+right:25px;
+}
+
+.nav a{
+margin-left:15px;
+font-size:14px;
+text-decoration:none;
+color:#1f2d3d;
+}
+
+/* MAIN */
+.main{
+padding-top:120px;
+max-width:900px;
+margin:auto;
+}
+
+/* SECTION */
+.section{
+padding:50px 20px;
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
+}
+
+/* BOX */
+.box{
+max-width:650px;
+background:white;
+padding:30px;
+border-radius:18px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+margin-bottom:20px;
+width:100%;
+}
+/* TEXT */
+h1{font-size:32px;margin-bottom:10px;}
+h2{font-size:24px;margin-bottom:10px;}
+h3{font-size:18px;margin-bottom:8px;}
+p{opacity:0.75;line-height:1.6;}
+
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+margin-top:20px;
+width:100%;
+max-width:700px;
+}
+
+.card{
+background:white;
+padding:16px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+cursor:pointer;
+transition:0.25s;
+}
+
+.card:hover{
+transform:translateY(-6px) scale(1.02);
+box-shadow:0 10px 25px rgba(0,0,0,0.12);
+}
+
+/* CTA */
+.cta{
+transition:0.25s;
+}
+
+.cta:hover{
+transform:scale(1.05);
+}
+.cta{
+margin-top:15px;
+padding:12px 20px;
+background:#2f3e46;
+color:white;
+border-radius:25px;
+display:inline-block;
+cursor:pointer;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+.grid{
+grid-template-columns:1fr;
+}
+h1{font-size:26px;}
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo-center">
+    <div class="brand">EyeOm</div>
+    <div class="tagline">THE THIRD EYE</div>
+  </div>
+
+  <div class="nav">
+    <a href="index.html">Home</a>
+    <a href="#">parenting</a>
+  </div>
+</div>
+
+<div class="main">
+
 <!-- HERO -->
 <div class="section">
 <div class="box">
-
 <h1>You’re trying your best… but still unsure.</h1>
-
 <p>
 Parenting is not confusing because you’re doing it wrong.  
-It’s confusing because you’re dealing with emotions — yours and your child’s.
+It’s confusing because you’re handling emotions — yours and your child’s.
 </p>
 
 <div class="cta" onclick="openAira('I feel unsure about my parenting decisions')">
 Talk to Aira about parenting
 </div>
-
+</p>
 </div>
 </div>
 
-<!-- CASE STUDY -->
 <div class="section">
 <div class="box">
-
-<h2>Case: Same child, different response</h2>
+<h2>Case: Same child, different outcome</h2>
 
 <p>
-A child throws a tantrum.
+A child throws a tantrum in public.
 </p>
 
 <p>
-One parent reacts with frustration and anger.  
-Another pauses, understands the emotion, and responds calmly.
+One parent reacts with anger, tries to control the situation quickly, and later feels guilty.
 </p>
 
-<p><b>The situation is the same. The response changes everything.</b></p>
+<p>
+Another parent understands the child is overwhelmed, stays calm, and handles it with clarity.
+</p>
 
+<p><b>The child is the same. The response changes everything.</b></p>
+</p>
 </div>
 </div>
 
-<!-- MODERN PARENTING REALITY -->
 <div class="section">
 <div class="box">
-
-<h2>What’s happening in parenting today</h2>
+<h2>What psychology shows</h2>
 
 <p>
-Too much advice, comparison, and pressure to “do it right”.
+Children don’t always express needs clearly — they express through behavior.
+</p>
+
+<p>
+Tantrums, silence, anger, or stubbornness are often signals, not problems.
+</p>
+
+<p>
+Parents don’t just react to children — they react from their own emotional state.
+</p>
+<p>
+Stress, fear, and confusion can worsen symptoms, reduce recovery speed,
+and affect decision-making during treatment.
+</p>
+<p>
+Clarity and emotional stability improve outcomes.
+</p>
+</div>
+</div>
+
+<div class="section">
+<div class="box">
+<h2>Modern parenting reality</h2>
+
+<p>
+Too much advice, comparison, and pressure to “be a perfect parent”.
 </p>
 
 <p>
 You’re not just raising a child — you’re managing expectations, emotions, and uncertainty.
 </p>
-
 </div>
 </div>
 
-<!-- PSYCHOLOGY -->
 <div class="section">
 <div class="box">
-
-<h2>What psychology shows</h2>
+<h2>Parenting is not just about control</h2>
 
 <p>
-Children don’t always express needs clearly.  
-They express through behavior.
+Behavior is visible.  
+Understanding is invisible.
 </p>
 
 <p>
-And parents don’t just react to behavior — they react to their own emotional state.
+Most struggles come not from the child — but from unclear situations.
 </p>
 
+<div class="cta" onclick="openAira('I want to understand my child better')">
+Talk to Aira about parenting
+</div>
 </div>
 </div>
 
-<!-- COMMON PATTERNS -->
+<!-- ENTRY OPTIONS -->
+<div class="section">
+  <h2>Start with what you feel</h2>
+
+  <div class="grid">
+    <div class="card">I lose patience with my child</div>
+<div class="card">My child doesn’t listen</div>
+<div class="card">I feel guilty as a parent</div>
+<div class="card">I don’t know if I’m doing it right</div>
+<div class="card">My child is emotionally sensitive</div>
+<div class="card">I feel overwhelmed with parenting</div>
+  </div>
+</div>
+
+<!-- ✅ FLOW (SEPARATE SECTION — IMPORTANT) -->
+<div id="flow" class="section" style="display:none;">
+  <div class="box" id="flowBox"></div>
+  <div class="cta" id="nextBtn" style="display:none;">Next</div>
+</div>
+
+
+<!-- BREAKDOWN -->
 <div class="section">
 <div class="box">
-
-<h2>What parents experience</h2>
-
-<p>• You lose patience and feel guilty later</p>
-<p>• You don’t know if you’re too strict or too soft</p>
-<p>• You compare your child with others</p>
-<p>• You feel responsible for everything</p>
+<h2>This is not random</h2>
 
 <p>
-This is not failure. It’s emotional overload.
+Children repeat behaviors when something is unmet, unclear, or emotionally unresolved.
+</p>
+
+<p>
+This is not “bad behavior” — it’s communication.
+</p>
+</div>
+</div>
+
+<!-- THEORY -->
+<div class="section">
+<div class="box">
+<h2>Why your mind doesn’t stop</h2>
+
+<h3>Cognitive Load</h3>
+<p>
+When too many thoughts compete, your brain struggles to prioritize,
+creating stress and mental fatigue.
+</p>
+
+<h3>Decision Fatigue</h3>
+<p>
+The more decisions you make, the harder it becomes to think clearly.
+This leads to confusion and overthinking.
 </p>
 
 </div>
@@ -92,7 +348,6 @@ This is not failure. It’s emotional overload.
 <!-- EXAMPLE -->
 <div class="section">
 <div class="box">
-
 <h2>Example</h2>
 
 <p>
@@ -101,74 +356,237 @@ You repeat instructions, get frustrated, and raise your voice.
 </p>
 
 <p>
-The problem may not be “disobedience” — it may be lack of attention, clarity, or emotional connection.
+The issue may not be disobedience — it may be lack of clarity, attention, or connection.
 </p>
-
 </div>
 </div>
 
-<!-- CORE INSIGHT -->
+<!-- INSIGHT -->
 <div class="section">
 <div class="box">
-
 <h2>You don’t need perfect control. You need better understanding.</h2>
 
 <p>
 When you understand what’s happening, your response becomes calmer and more effective.
 </p>
-
+</p>
 </div>
 </div>
 
 <!-- ACTION -->
-<div class="section">
-<div class="box">
-
 <h2>Start here</h2>
 
 <p>
 Pause. What exactly is happening — behavior, emotion, or misunderstanding?
 </p>
 
-<div class="cta" onclick="openAira('I want to understand my child better')">
+<div class="cta" onclick="openAira('I want clarity in my parenting situation')">
 Start with Aira
-</div>
 
 </div>
 </div>
-
-<!-- ENTRY OPTIONS -->
-<div class="section">
-  <h2>Start with what you feel</h2>
-  <div class="grid">
-    <div class="card">I lose patience with my child</div>
-    <div class="card">My child doesn’t listen</div>
-    <div class="card">I feel guilty as a parent</div>
-    <div class="card">I don’t know if I’m doing it right</div>
-    <div class="card">My child is emotionally sensitive</div>
-    <div class="card">I feel overwhelmed with parenting</div>
-  </div>
 </div>
 
-<!-- FLOW -->
-<div id="flow" class="section" style="display:none;">
-  <div class="box" id="flowBox"></div>
-  <div class="cta" id="nextBtn" style="display:none;">Next</div>
-</div>
-
-<!-- FINAL CTA -->
+<!-- HUMAN HELP -->
 <div class="section">
 <div class="box">
+<h2>Need deeper clarity?</h2>
+<p>Talk to a real person and understand your situation better.</p>
 
-<h2>Still unsure?</h2>
+<div class="cta" onclick="window.open('https://wa.me/919603561111')">
+<h2>Need deeper help?</h2>
 
 <p>
-You don’t have to figure everything out alone.
+If things feel overwhelming, you can go deeper with guidance.
 </p>
 
-<div class="cta" onclick="openAira('I feel overwhelmed as a parent and need clarity')">
-Talk to Aira
+<div class="cta" onclick="openAira('I need deeper help with parenting')">
+Talk to Aira deeper
+</div>
+</div>
+</div>
 </div>
 
 </div>
+<script>
+
+const flows = {
+stress: [
+`<h2>Step 1: What is stressing you?</h2>
+<p>Is it work, people, decisions, or uncertainty?</p>`,
+
+`<h2>Step 2: Why is it affecting you?</h2>
+<p>Because something feels unclear, out of control, or unresolved.</p>`,
+
+`<h2>Step 3: What is unclear?</h2>
+<p>Find the exact part you don’t understand.</p>`,
+
+`<h2>Step 4: What to do next</h2>
+<p>Don’t solve everything. Solve one clear piece.</p>`
+],
+
+overthinking: [
+`<h2>Step 1: What thought repeats?</h2>
+<p>Identify the exact thought loop.</p>`,
+
+`<h2>Step 2: Why is it repeating?</h2>
+<p>Because it hasn’t reached clarity.</p>`,
+
+`<h2>Step 3: What is missing?</h2>
+<p>Information, decision, or closure.</p>`,
+
+`<h2>Step 4: What to do</h2>
+<p>Finish the loop — don’t suppress it.</p>`
+],
+
+tired: [
+`<h2>Step 1: What is draining you?</h2>
+<p>Too many inputs or decisions.</p>`,
+
+`<h2>Step 2: Why?</h2>
+<p>Your brain is overloaded.</p>`,
+
+`<h2>Step 3: What is needed?</h2>
+<p>Reduce input.</p>`,
+
+`<h2>Step 4: Action</h2>
+<p>Focus on one thing only.</p>`
+],
+
+focus: [
+`<h2>Step 1: What is pulling your attention?</h2>
+<p>List competing thoughts.</p>`,
+
+`<h2>Step 2: Why?</h2>
+<p>Unfinished loops.</p>`,
+
+`<h2>Step 3: What matters now?</h2>
+<p>Pick one.</p>`,
+
+`<h2>Step 4: Action</h2>
+<p>Complete it.</p>`
+],
+
+repeat: [
+`<h2>Step 1: What repeats?</h2>
+<p>Name the loop.</p>`,
+
+`<h2>Step 2: Why?</h2>
+<p>Unresolved situation.</p>`,
+
+`<h2>Step 3: What is missing?</h2>
+<p>Clarity.</p>`,
+
+`<h2>Step 4: Action</h2>
+<p>Understand it fully.</p>`
+],
+
+unknown: [
+`<h2>Step 1: What feels off?</h2>
+<p>Even if unclear, try to describe it.</p>`,
+
+`<h2>Step 2: Why?</h2>
+<p>Lack of clarity.</p>`,
+
+`<h2>Step 3: What do you need?</h2>
+<p>Definition.</p>`,
+
+`<h2>Step 4: Action</h2>
+<p>Start small.</p>`
+]
+};
+
+let currentFlow = [];
+let step = 0;
+
+// click cards
+document.querySelectorAll(".card").forEach((card, index) => {
+  const keys = ["stress","overthinking","tired","focus","repeat","unknown"];
+
+  card.addEventListener("click", () => {
+    
+
+    // ✅ remove active from all
+    document.querySelectorAll(".card").forEach(c => c.classList.remove("active"));
+
+    // ✅ add active to clicked one
+    card.classList.add("active");
+
+    // ✅ flow logic
+    currentFlow = flows[keys[index]];
+    step = 0;
+    showStep();
+  });
+});
+
+function showStep(){
+const flowBox = document.getElementById("flowBox");
+const flow = document.getElementById("flow");
+const nextBtn = document.getElementById("nextBtn");
+
+flow.style.display = "block";
+setTimeout(()=>flow.classList.add("show"),10);flowBox.innerHTML = currentFlow[step];
+
+nextBtn.style.display = "inline-block";
+
+flow.scrollIntoView({behavior:"smooth"});
+}
+
+document.getElementById("nextBtn").addEventListener("click", () => {
+
+step++;
+
+if(step < currentFlow.length){
+showStep();
+}else{
+document.getElementById("flowBox").innerHTML = `
+<h2>You now understand what's happening</h2>
+
+<p>
+Clarity reduces mental load. Now you can either act on it
+or explore deeper with guidance.
+</p>
+
+<div class="cta" onclick="openAira('I want to understand this deeper')">
+Talk to Aira about this
 </div>
+`;
+document.getElementById("nextBtn").style.display = "none";
+}
+
+});
+function openAira(context){
+  window.location.href = "index.html?aira=" + encodeURIComponent(context);
+}
+  window.addEventListener("load", () => {
+  const chat = document.getElementById("airaChat");
+  if(!chat) return;
+
+  const history = JSON.parse(localStorage.getItem("airaChat")) || [];
+
+  history.forEach(msg => {
+    const div = document.createElement("div");
+    div.className = msg.role === "user" ? "msg user" : "msg aira";
+    div.innerText = msg.text;
+    chat.appendChild(div);
+  });
+});
+</script>
+  function toggleAira(){
+  const box = document.getElementById("airaBox");
+  box.style.display = box.style.display === "none" ? "block" : "none";
+}
+<!-- AIRA BUTTON -->
+<div id="airaBtn" onclick="toggleAira()">Aira</div>
+
+<!-- AIRA BOX -->
+<div id="airaBox" style="display:none;">
+  <div id="airaChat"></div>
+
+  <div id="airaInputBox">
+    <input id="airaInput" placeholder="Talk to Aira..." />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+</body>
+</html>
